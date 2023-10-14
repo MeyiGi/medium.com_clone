@@ -1,0 +1,123 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+/* general  */
+.dot {
+	position: relative;
+	top: -6px;
+	font-size: 20px;
+}
+.inline {
+	display: flex;
+	margin-right: 20px;
+	align-items: center;
+	line-height: 0.8em;
+}
+.container {
+    margin-top: 15px;
+}
+.muted {
+	color: #777;
+	font-size: 13px;
+}
+.secondary {
+    background-color: #777;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: 500;
+}
+.secondary:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+.alert {
+    padding: 25px 20px;
+    padding-top: 40px;
+    font-size: 16px;
+}
+.alert.alert-danger {
+    background-color: rgb(246, 135, 135);
+    color: rgb(134, 12, 12);
+    border: 1px solid rgb(255, 69, 69);
+}
+.alert.alert-success {
+    background-color: rgb(133, 251, 133);
+    color: black;
+    border: 1px solid rgb(0, 202, 0);
+}
+
+/* dropdown comment */
+
+.dropdownBtn {
+	position: absolute;
+	top: 3px;
+	right: 6px;
+	padding: 6px 10px;
+	color: #666;
+	border: none;
+	cursor: pointer;
+	background: none;
+	border-radius: 20px;
+	font-size: 18px;
+	transition: 0.3s;
+	border: 0.5px solid #ddd;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.dropdownBtn:hover {
+	color: #333;
+	background: #ccc;
+}
+.dropdown-content {
+	border: 1px solid #ddd;
+	border-radius: 13px;
+	display: none;
+	position: absolute;
+	top: 43px;
+	right: 6px;	
+	background-color: #f9f9f9;
+	min-width: 100px;
+	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: #333;
+	padding: 10px 17px;
+	text-decoration: none;
+	display: block;
+}
+  
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+.show {
+	display: block;
+}
+.active {
+	color: #333;
+	background: #ccc;
+}
+
+/* profile photo */
+
+.profile-photo {
+	width: 33px;
+	height: 33px;
+	display: inline-block;
+}
+.profile-photo img {
+	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.profile-photo img:hover {
+	cursor: pointer;
+}

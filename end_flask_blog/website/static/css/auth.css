@@ -1,0 +1,96 @@
+.auth-content {
+    position: relative;
+    height: 100vh;
+    align-items: center;
+    background: url('/../static/images/bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.auth-content .auth-content-data h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.auth-content .auth-content-data {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -53%);
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+}
+.auth-content .auth-content-data .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+.auth-content .auth-content-data .input-box .form-control {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+.auth-content .auth-content-data .input-box .form-control::placeholder {
+    color: #fff;
+}
+.auth-content .auth-content-data .input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.auth-content .auth-content-data .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 0px 15px;
+    font-size: 14.5px;
+}
+.auth-content .auth-content-data .remember-forgot label input {
+    accent-color: white;
+    margin-right: 3px;
+}
+.auth-content .auth-content-data .remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+.auth-content .auth-content-data .remember-forgot a:hover {
+    text-decoration: underline;
+}
+.auth-content .auth-content-data .auth-btn {
+    width: 100%;
+    height: 45px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+.auth-content .auth-content-data .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px 0 15px;
+}
+.auth-content .auth-content-data .register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.auth-content .auth-content-data .register-link p a:hover {
+    text-decoration: underline;
+}

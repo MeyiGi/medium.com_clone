@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="auth-content">
+		<div style="width: 70%;">
+			<div class="auth-content-data">
+				<form method="POST">
+					<h1>Login</h1>
+
+					{{ form.hidden_tag() }}
+					<div class="input-box">
+						{{ form.email(class="form-control", placeholder="email") }}
+						<i class='bx bxs-envelope' ></i>
+					</div>
+					
+					<div class="input-box">
+						{{ form.password(class="form-control", placeholder="password") }}
+						<i class='bx bxs-lock-alt' ></i>
+					</div>
+
+					<div class="remember-forgot">
+						<label><input type="checkbox"> Remeber me</label>
+						<a href="">Forgot a password?</a>
+					</div>
+
+					{{ form.submit(class="auth-btn", value="Login") }}
+
+					<br>
+
+					<div class="register-link">
+						<p>don't have an account? <a href="/sign-up">Register</a></p>
+					</div>
+				</form>
+			</div> <!-- auth-content-data -->
+		</div>
+	</div> <!-- auth-content -->
+{% endblock %}

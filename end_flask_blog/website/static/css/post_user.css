@@ -1,0 +1,60 @@
+.user-of-post {
+	line-height: 0.9em;
+	display: inline-flex;
+	padding-bottom: 20px;
+}
+.user-info {
+	margin-left: 13px;
+}
+.user_post {
+	width: 100vh;
+	font-size: 20px;
+	margin: 0 auto;
+	transition: 0.3s;
+}
+.user-name a {
+	color: black;
+	text-decoration: none;
+}
+.user-name a:hover {
+	text-decoration: underline;
+}
+#comments form {
+	margin-bottom: 5px;
+}
+.comments-likes {
+	margin: auto 0;
+	border-bottom: 1px solid #aaa;
+	border-top: 1px solid #aaa;
+	padding: 15px 5px;
+}
+.comments-likes .opinions span {
+	color: #000;
+	cursor: pointer;
+	font-size: 16px;
+}
+.user_post.active {
+	filter: blur(20px);
+}
+.form-control {
+	margin-bottom: 10px;
+}
+.comment {
+	position: relative;
+	padding: 20px 15px;
+}
+.comment:hover {
+	background: #eee;
+}
+#comments textarea {
+	resize: vertical;
+	width: 100%;
+	padding: 10px 15px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border: 2px solid #ccc;
+	margin-bottom: 0px;
+	font-size: 15px;
+	font-weight: 500;
+	color: #444;
+}

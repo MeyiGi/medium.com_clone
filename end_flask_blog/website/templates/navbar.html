@@ -1,0 +1,26 @@
+<nav>
+    <div class="nav-content">
+
+        <div class="logo">
+            <a href="/home"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
+        </div> <!-- logo -->
+
+        <div class="nav-items">
+            <ul>
+                <li><a href="/profile/{{ user.id }}">Profile</a></li>
+                <li><a href="/create-post">Make a Post</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+            </ul>
+        </div> <!-- nav-items -->
+
+    </div> <!-- nav-contnet -->
+
+    <div class="nav-search">
+        <input type="text" class="search" placeholder="Search Any Articles You wanna read!">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div> <!-- nav-search -->
+</nav>

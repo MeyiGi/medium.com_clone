@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="create-post-content">
+		<div style="width: 70%;">
+			<div>
+				<h1>Post</h1>
+			</div>
+
+			<div class="create-post-content-data">
+				<br>
+				<form method="POST">
+					{{ form.hidden_tag() }}
+
+					{{ form.title.label(class="form-label") }} <br>
+					{{ form.title(class="form-control") }}
+
+					<br>
+
+					{{ form.text.label(class="form-label") }} <br>
+					{{ form.text(class="form-control-textarea", id="exampleFormControlTextarea1", rows="8") }}
+
+					<br>
+					{{ form.submit(class="secondary") }}
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

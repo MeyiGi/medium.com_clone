@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="user_post">
+<br>
+	<h1 style="font-size: 40px; font-weight: 700">{{ post.title }}</h1><br> <br>
+
+	<div class="user-of-post">
+		<div class="profile-photo">
+			{% if post.user.profile_pic %}
+				{{ post.user.profile_pic }}
+			{% else %}
+				<img src="{{ url_for('static', filename='images/japan_sweet.png') }}" alt="">
+			{% endif %}
+		</div>
+
+		<div class="user-info">
+			
+			<div>
+				<span class="user-name"><a href="/profile/{{ post.user.id }}">{{ post.user.username }}</a></span> 
+
+				&nbsp; <span class="dot"> . </span> &nbsp; 
+
+				<span> <a href="">Follow</a> </span>
+			</div>
+
+			<div>
+				<span class="muted"> {{ post.text|length // 800 }} min read </span>
+
+				&nbsp; 
+				<span class="dot"> 
+				<span class="muted">.</span>
+				</span> 
+				&nbsp; 
+
+				<span class="muted">
+					{{ month_name[post.date_created.month] }}, {{ post.date_created.day }} 
+
+					{% if post.date_created.year != 2023 %}
+						{{ post.date_created.year }}
+					{% endif %}
+				</span>
+			</div>
+		</div>
+	</div> <!-- user-info --> <br>
+
+	<div class="comments-likes">
+		<div class="opinions">
+			<span>
+				{% if user.id in post.likes | map(attribute="author") | list %}
+					<i id="like-button-{{ post.id }}" class="fa-solid fa-thumbs-up" onclick="like( {{ post.id }} )"></i>
+				{% else %}
+					<i id="like-button-{{ post.id }}" class="fa-regular fa-thumbs-up" onclick="like( {{ post.id }} )"></i>
+				{% endif %}
+			</span>
+
+			&nbsp;
+
+			<span id="likes-count-{{ post.id }}" data-post-id="{{ post.id }}">{{ post.likes | length }}</span> &nbsp;
+			<span onclick="scrollToComments('comments')"><i class="fa-solid fa-comment"></i>&nbsp; {{ post.comments | length }}</span>
+		</div> <!-- comments-likes -->
+	</div> <!-- comments-likes -->
+	<br>
+	{% for paragraph in post.text.split("\n") %}
+		{{ paragraph }} <br>
+	{% endfor %}
+
+	<br>
+
+	<div id="comments">
+		<form method="POST" action="/create-comment/{{ post.id }}">
+			<div class="mb-3">
+			  <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="What are your thoughts?"></textarea>
+			  <button type="submit" class="secondary">Comment</button>
+			</div>
+		</form>
+		{% if post.comments %}
+			{% for comment in post.comments[::-1] %}
+				<div class="comment">
+					{{ comment.user.username }} --> {{ comment.text }} 
+					{% if user.id == comment.author %}
+					<div class="dropdown">
+
+						<button class="dropdownBtn" type="button">
+							<i class="fa-solid fa-ellipsis"></i>
+						</button>
+
+						<div class="dropdown-content">
+							<a href="" class="menu-item" type="button">Edit this comment</a>
+							<a a href="/delete-comment/{{ post.id }}/{{ comment.id }}"
+								class="menu-item" type="button">Delete comment</a>	  
+						</div>
+
+					</div> <!-- dropdown -->
+					{% endif %}
+
+
+					<div class="muted">
+						
+						{{ month_name[comment.date_created.month] }}, {{ comment.date_created.day }} 
+
+						{% if comment.date_created.year != 2023 %}
+							{{ comment.date_created.year }}
+						{% endif %}
+
+					</div>
+
+				</div> <!-- comment -->
+			{% endfor %}
+		{% else %}
+			<h1>No comment!</h1>
+		{% endif %}
+	</div> <!-- comments -->
+			
+</div> <!-- user_post -->
+
+<br> <br> <br> <br> <br> <br>
+
+
+<script type="text/javascript">
+	function scrollToComments(commentsId) {
+		const comments = document.getElementById(commentsId)
+		comments.scrollIntoView({behavior: "smooth"})
+	}
+
+	// JavaScript function for auto-scrolling after deleting a comment
+        function deleteAndScroll(commentId) {
+        // Send an asynchronous request to delete the comment
+            fetch(`/delete_comment/${commentId}`, { method: 'GET' })
+            .then(response => {
+                // After the comment is deleted, scroll to the last comment
+                const commentsDiv = document.getElementById('comments');
+                commentsDiv.scrollTop = commentsDiv.scrollHeight;
+            })
+            .catch(error => console.error('Error deleting comment:', error));
+            
+            // Prevent the default link behavior (optional)
+            return false;
+        }
+</script>
+{% endblock %}

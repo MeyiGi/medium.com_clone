@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+<div class="content">
+	<div class="main">
+		<div class="posts">
+			{% for post in posts %}
+			<div class="user">
+				<div class="profile-photo">
+					{% if post.user.profile_pic %}
+						{{ post.user.profile_pic }}
+					{% else %}
+						<img src="{{ url_for('static', filename='images/japan_sweet.png') }}" alt="">
+					{% endif %}
+				</div>
+
+				&nbsp; &nbsp;
+
+				<span>
+					{{ post.user.username }}  - 
+				</span>
+				
+				&nbsp;
+
+				<span class="muted">
+
+					{{ month_name[post.date_created.month] }}, {{ post.date_created.day }} 
+
+					{% if post.date_created.year != 2023 %}
+						{{ cpost.date_created.year }}
+					{% endif %}
+
+				</span>
+
+				&nbsp; &nbsp;
+				
+				<span>
+					{% if user.id in post.likes | map(attribute="author") | list %}
+						<i id="like-button-{{ post.id }}" class="fa-solid fa-thumbs-up" onclick="like( { post.id } )"></i>
+					{% else %}
+						<i id="like-button-{{ post.id }}" class="fa-regular fa-thumbs-up" onclick="like( { post.id } )"></i>
+					{% endif %}
+				</span>
+
+				&nbsp;
+
+				<span id="likes-count-{{ post.id }}" data-post-id="{{ post.id }}">{{ post.likes | length }}</span>
+
+				{% if user.id == post.user.id %}
+				<div class="dropdown">
+
+					<button class="dropdownBtn" type="button">
+						<i class="fa-solid fa-ellipsis"></i>
+					</button>
+
+					<div class="dropdown-content">
+						<a href="{{ url_for('views.delete_post', id=post.id) }}">Delete this comment</a>
+						<a href="">Update this comment</a>
+					</div>
+
+				</div>
+				{% endif %}
+				<br> <br>
+			</div>
+				<div class="title-of-post"><a href="{{ url_for('views.post_user', id=post.id) }}">{{ post.title }} </a></div> <br>
+				<div class="intro-of-post">{{ post.text[:200] }}. . . . . .<br> <br></div><br>
+
+			{% endfor %}
+		</div> <!-- posts -->
+
+		<div class="sidebar">
+			<div class="content-wrapper">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div>HELLO!!!! IT IS SITE CLONE OF MEDIUM.COM</div>
+			</div> <!-- content-wrapper -->
+		</div> <!-- wrapper -->
+	</div> <!-- main -->
+</div> <!-- content -->
+
+{% endblock %}
